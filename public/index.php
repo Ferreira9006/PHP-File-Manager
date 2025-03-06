@@ -1,4 +1,7 @@
 <?php
+// Load Bootstrap
+require_once __DIR__ . '/../config.php';
+
 // Load Composer Dependencies
 require_once __DIR__ . '/../vendor/autoload.php';
 
@@ -19,7 +22,8 @@ $log->info('Application has started');
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
 switch ($uri) {
-  case '':
+  case '/':
+    require_once '';
     break;
 }
 ?>
