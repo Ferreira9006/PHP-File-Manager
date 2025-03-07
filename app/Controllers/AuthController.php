@@ -10,7 +10,7 @@ class AuthController {
   }
 
   public function index() {
-    echo 'login page';
+    Application::view('LoginView');
   }
 
 }

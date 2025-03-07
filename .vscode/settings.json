@@ -1,0 +1,5 @@
+{
+  "liveServer.settings.port": 5501,
+  "fiveServer.php.executable": "/opt/homebrew/bin/php",
+  "fiveServer.php.ini": "/opt/homebrew/bin/php/php.ini"
+}

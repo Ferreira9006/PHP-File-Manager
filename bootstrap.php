@@ -1,9 +1,5 @@
 <?php
 // APP Configuration File
-
-// Starts the Session
-session_start();
-
 // Base of the Project Path
 define ('BASE_PATH', __DIR__); 
 
