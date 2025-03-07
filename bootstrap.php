@@ -18,5 +18,5 @@ define ('VIEWS_PATH', APP_PATH . '/Views');
 // Public Directory Path
 define ('PUBLIC_PATH', BASE_PATH . '/public'); 
 
-
-
+define('APP_NAME', 'File Manager');
+define('COMPANY_NAME', 'Company Name');

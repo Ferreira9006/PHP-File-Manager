@@ -54,6 +54,12 @@ class Application {
         $controller = new AuthController(self::$log);
         $controller->index();
         break;
+
+      case '/login/verify':
+        Application::controller('AuthController');
+        $controller = new AuthController(self::$log);
+        echo "login_verify";
+        break;
     }
   }
 }

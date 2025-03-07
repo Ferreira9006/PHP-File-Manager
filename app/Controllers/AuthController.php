@@ -10,7 +10,9 @@ class AuthController {
   }
 
   public function index() {
+    Application::view('/template/header');
     Application::view('LoginView');
+    Application::view('/template/footer');
   }
 
 }
