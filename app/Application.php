@@ -1,17 +1,16 @@
 <?php
 
-    use Dotenv\Dotenv;
-    use Monolog\Logger;
-    use Monolog\Handler\StreamHandler;
+use Dotenv\Dotenv;
+use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
 
-class Application {
+class Application
+{
 
   public static $log;
 
-  public static function init() {
-    
-
-    // Session start
+  public static function init()
+  {
     session_start();
 
     // Load env variables
@@ -24,31 +23,35 @@ class Application {
     self::$log->info('Application has started');
   }
 
-  public static function view($view, $data = []) {
+  public static function view($view, $data = [])
+  {
     // Extract the data so that variables are available in the view
     if (!empty($data)) {
       extract($data);
     }
-    
+
     require_once VIEWS_PATH . '/' . $view . '.php';
   }
-  
-  public static function controller($controller) {
+
+  public static function controller($controller)
+  {
     require_once CONTROLLERS_PATH . '/' . $controller . '.php';
   }
-  
-  public static function model($model) {
+
+  public static function model($model)
+  {
     require_once MODELS_PATH . '/' . $model . '.php';
   }
 
-  public static function routes($route) {
+  public static function routes($route)
+  {
     switch ($route) {
       case '/':
         Application::controller('FileController');
         $controller = new FileController(self::$log);
         $controller->index();
         break;
-    
+
       case '/login':
         Application::controller('AuthController');
         $controller = new AuthController(self::$log);
@@ -58,7 +61,13 @@ class Application {
       case '/login/verify':
         Application::controller('AuthController');
         $controller = new AuthController(self::$log);
-        echo "login_verify";
+        $controller->loginVerify($_POST['email'], $_POST['password']);
+        break;
+
+      case '/logout':
+        session_destroy();
+        header('Location: /');
+        exit;
         break;
     }
   }

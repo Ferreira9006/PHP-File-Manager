@@ -1,6 +1,7 @@
 <?php
 
-class FileController {
+class FileController
+{
 
   private $log;
 
@@ -9,14 +10,15 @@ class FileController {
     $this->log = $logger;
   }
 
-  public function index() {
-    if (empty($_SESSION['email']))
-    {
+  public function index()
+  {
+    if (empty($_SESSION['email'])) {
       header('Location: /login');
       exit;
     }
+
+    Application::view('template/header');
+    Application::view('filesView');
+    Application::view('template/footer');
   }
-
 }
-
-?>

@@ -8,4 +8,3 @@ Application::init(); // Initialize the Application
 // Routing
 $uri = parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH);
 Application::Routes($uri);
-?>
