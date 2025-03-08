@@ -107,7 +107,7 @@
           </button>
         </form>
         <p class="mt-5 mb-3 text-muted">
-          &copy; Company Name - 2025
+          &copy; <?= $_ENV['COMPANY_NAME']; ?> - <?= date('Y'); ?>
         </p>
       </div>
     </div>

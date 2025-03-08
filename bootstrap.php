@@ -6,6 +6,9 @@ define ('BASE_PATH', __DIR__);
 // Application Path
 define ('APP_PATH', BASE_PATH . '/app'); 
 
+// Data Path
+define ('DATA_PATH', BASE_PATH . '/data'); 
+
 // Controllers Path
 define ('CONTROLLERS_PATH', APP_PATH . '/Controllers'); 
 
@@ -17,6 +20,3 @@ define ('VIEWS_PATH', APP_PATH . '/Views');
 
 // Public Directory Path
 define ('PUBLIC_PATH', BASE_PATH . '/public'); 
-
-define('APP_NAME', 'File Manager');
-define('COMPANY_NAME', 'Company Name');

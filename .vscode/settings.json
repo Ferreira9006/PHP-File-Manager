@@ -1,5 +1,8 @@
 {
   "liveServer.settings.port": 5501,
-  "fiveServer.php.executable": "/opt/homebrew/bin/php",
-  "fiveServer.php.ini": "/opt/homebrew/bin/php/php.ini"
+  "fiveServer.php.executable": "C:\\xampp\\php\\php.exe",
+  "fiveServer.php.ini": "C:\\xampp\\php\\php.ini",
+  "fiveServer.browser": [
+    
+  ]
 }
