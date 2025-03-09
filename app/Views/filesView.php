@@ -36,24 +36,15 @@
       </div>
     </div>
     <div class="btn-group" role="group">
-      <input
-        type="radio"
-        class="btn-check"
-        name="file-manager-view"
-        id="col-view"
-        checked />
+      <input type="radio" class="btn-check" name="file-manager-view" id="col-view" checked />
       <label class="btn btn-outline-secondary" for="col-view"><i class="bi bi-grid-3x3-gap"></i></label>
 
-      <input
-        type="radio"
-        class="btn-check"
-        name="file-manager-view"
-        id="row-view" />
+      <input type="radio" class="btn-check" name="file-manager-view" id="row-view" />
       <label class="btn btn-outline-secondary" for="row-view"><i class="bi bi-list"></i></label>
     </div>
   </div>
 
-  <!-- File/Folder Grid -->
+  <!-- File/Folder Grid --> 
   <div class="row row-cols-1 row-cols-sm-3 row-cols-md-5 row-cols-lg-6 g-3 mt-5">
     <!-- Example Folder -->
     <div class="col">

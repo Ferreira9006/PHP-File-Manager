@@ -2,7 +2,6 @@
 
 class FileController
 {
-
   private $log;
 
   public function __construct($logger)
@@ -16,6 +15,15 @@ class FileController
       header('Location: /login');
       exit;
     }
+    $this->showFiles();
+  }
+
+  public function showFiles()
+  {
+    Application::model('FileModel');
+    $fileModel = new FileModel(BASE_PATH .'/'. $_ENV['UPLOAD_FOLDER']);
+
+    $fileModel->getFiles();
 
     Application::view('template/header');
     Application::view('filesView');

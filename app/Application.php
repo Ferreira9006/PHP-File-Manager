@@ -6,7 +6,6 @@ use Monolog\Handler\StreamHandler;
 
 class Application
 {
-
   public static $log;
 
   public static function init()
