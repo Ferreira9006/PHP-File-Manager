@@ -61,7 +61,7 @@ class Application
       case '/login/verify':
         Application::controller('AuthController');
         $controller = new AuthController(self::$log);
-        $controller->loginVerify($_POST['email'], $_POST['password']);
+        $controller->login($_POST['email'], $_POST['password']);
         break;
 
       case '/logout':

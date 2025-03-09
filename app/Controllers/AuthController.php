@@ -17,31 +17,30 @@ class AuthController
     Application::view('/template/footer');
   }
 
-  public function loginVerify($email, $password)
+  public function login($email, $password)
   {
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-      if (!empty($email) && !empty($password) && filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $this->login($email, $password);
-      } else {
-        header('Location: /');
-        exit;
-      }
-    } else {
+    if ($_SERVER['REQUEST_METHOD'] != 'POST') {
+      header ('Location: /login');
+      exit;
+    }
+
+    if (empty($email) && empty($password) && !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+      $_SESSION['toast_message'] = [
+        'type'    => 'danger',
+        'message' => 'Please provide a valid email and password.'
+      ];
       header('Location: /login');
       exit;
     }
-  }
 
-  public function login($email, $password)
-  {
     Application::model('UserModel');
     $userModel = new UserModel();
 
-    $users = $userModel->getAccounts($email)->fetch();
+    $user = $userModel->getAccounts($email)->fetch();
 
-    if (!empty($users) && $users['email'] == $email && password_verify($password, $users['password'])) {
-      $_SESSION['email'] = $users['email'];
-      $_SESSION['name'] = $users['name'];
+    if ($user && $user['email'] == $email && password_verify($password, $user['password'])) {
+      $_SESSION['email'] = $user['email'];
+      $_SESSION['name'] = $user['name'];
 
       $_SESSION['toast_message'] = [
         'type' => 'success',
@@ -49,7 +48,7 @@ class AuthController
       ];
 
       header('Location: /');
-      $this->log->info("User '{$users['name']}<{$users['email']}>' logged in");
+      $this->log->info("User '{$user['name']}<{$user['email']}>' logged in");
       exit;
     }
 
@@ -57,7 +56,6 @@ class AuthController
       'type' => 'danger',
       'message' => 'Incorrect login information. Please try again.'
     ];
-
     header('Location: /login');
     exit;
   }
