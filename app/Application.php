@@ -42,6 +42,15 @@ class Application
     require_once MODELS_PATH . '/' . $model . '.php';
   }
 
+  public static function customEcho($text)
+  {
+    if (strlen($text) > 25) {
+      return htmlspecialchars(substr($text, 0, 25)) . '...';
+    } else {
+      return htmlspecialchars($text);
+    }
+  }
+
   public static function routes($route)
   {
     switch ($route) {
