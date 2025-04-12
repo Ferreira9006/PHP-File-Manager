@@ -22,6 +22,11 @@ class Application
     self::$log->info('Application has started');
   }
 
+  public static function getLogger()
+  {
+    return self::$log;
+  }
+
   public static function view($view, $data = [])
   {
     // Extract the data so that variables are available in the view
@@ -44,39 +49,10 @@ class Application
 
   public static function customEcho($text)
   {
-    if (strlen($text) > 25) {
-      return htmlspecialchars(substr($text, 0, 25)) . '...';
+    if (strlen($text) > 20) {
+      return htmlspecialchars(substr($text, 0, 20)) . '...';
     } else {
       return htmlspecialchars($text);
-    }
-  }
-
-  public static function routes($route)
-  {
-    switch ($route) {
-      case '/':
-        Application::controller('FileController');
-        $controller = new FileController(self::$log);
-        $controller->index();
-        break;
-
-      case '/login':
-        Application::controller('AuthController');
-        $controller = new AuthController(self::$log);
-        $controller->index();
-        break;
-
-      case '/login/verify':
-        Application::controller('AuthController');
-        $controller = new AuthController(self::$log);
-        $controller->login($_POST['email'], $_POST['password']);
-        break;
-
-      case '/logout':
-        session_destroy();
-        header('Location: /');
-        exit;
-        break;
     }
   }
 }
